@@ -7,7 +7,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <BrowserRouter basename="/appointment/app/login">
+  <BrowserRouter basename="/appointment/app">
     <App />
   </BrowserRouter>
 );

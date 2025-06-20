@@ -56,7 +56,7 @@ function Login({ setIsAuthenticated }) {
         sessionStorage.setItem("loggedInUser", name);
         sessionStorage.setItem("role", role);
         setTimeout(() => {
-          navigate("/appointments");
+          navigate("/dashboard");
         }, 1000);
       } else if (error) {
         const details = error?.details[0]?.message;

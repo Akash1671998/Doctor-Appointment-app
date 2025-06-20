@@ -1,10 +1,12 @@
 import React from "react";
 import { Box, Typography, Paper } from "@mui/material";
+import CommonPageWrapper from "../layout/PageWrapper";
 
 function Dashboard() {
   const loggedInUser = sessionStorage.getItem("loggedInUser");
   const UserRole = sessionStorage.getItem("role");
   return (
+    <CommonPageWrapper maxWidth={500}>
     <Box
       display="flex"
       justifyContent="center"
@@ -33,6 +35,7 @@ function Dashboard() {
         </Typography>
       </Paper>
     </Box>
+    </CommonPageWrapper>
   );
 }
 

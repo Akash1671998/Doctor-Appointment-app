@@ -1,6 +1,5 @@
 {
   "name": "testing",
- "homepage": "https://akash1671998.github.io/expense-tracker-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

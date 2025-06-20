@@ -76,6 +76,7 @@ const ChangePassword = () => {
   };
 
   return (
+    
     <Box
       sx={{
         minHeight: "90vh",

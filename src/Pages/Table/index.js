@@ -13,8 +13,8 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
-import { application } from "../../authentication/auth";
 import TuneIcon from "@mui/icons-material/Tune";
+import { application } from "../../authentication/auth";
 
 const CustomTable = ({
   title,
@@ -49,7 +49,7 @@ const CustomTable = ({
   const handleSearchChange = (e) => {
     const value = e.target.value;
     if (dynamicSearch) {
-      onSearchChange?.(value); // if provided
+      onSearchChange?.(value);
     } else {
       setLocalSearch(value.toLowerCase());
     }
@@ -75,64 +75,105 @@ const CustomTable = ({
 
   return (
     <Paper
-      elevation={3}
-      style={{
-        padding: 20,
-        marginTop: 20,
+      elevation={4}
+      sx={{
+        padding: 3,
+        mt: 4,
         width: "97%",
-        maxWidth: "6000px",
-        marginLeft: "auto",
-        marginRight: "auto",
+        mx: "auto",
+        borderRadius: 4,
+        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
+        backgroundColor: "#f9fafe",
       }}
     >
-      <Typography variant="h6" gutterBottom>
+      {/* Title */}
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ color: "#0d47a1", fontWeight: "bold" }}
+      >
         {title}
       </Typography>
 
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
+      {/* Search and Filter Controls */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 2,
+          flexWrap: "wrap",
+          gap: 2,
+        }}
+      >
         {searchEnable && (
           <TextField
             variant="outlined"
-            placeholder="Search..."
+            size="small"
+            placeholder="Search by name, email..."
             onChange={handleSearchChange}
-            style={{ width: 300 }}
+            sx={{ width: { xs: "100%", sm: 300 } }}
           />
         )}
+
         {filterEnable && (
           <IconButton
             onClick={handleTuneClick}
-            color="success"
-            sx={{ width: 60, height: 60 }}
+            sx={{
+              backgroundColor: "#e3f2fd",
+              borderRadius: "50%",
+              width: 50,
+              height: 50,
+              color: "#1976d2",
+              "&:hover": {
+                backgroundColor: "#bbdefb",
+              },
+            }}
           >
-            <TuneIcon sx={{ fontSize: 36 }} />
+            <TuneIcon sx={{ fontSize: 28 }} />
           </IconButton>
         )}
       </Box>
 
+      {/* Table */}
       <TableContainer>
         <Table>
-          <TableHead style={{ backgroundColor: "#1976d2" }}>
-            <TableRow>
-              <TableCell style={{ color: "white" }}>#</TableCell>
+          <TableHead>
+            <TableRow sx={{ backgroundColor: "#1976d2" }}>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>#</TableCell>
               {columns.map((col) => (
-                <TableCell key={col.field} style={{ color: "white" }}>
+                <TableCell
+                  key={col.field}
+                  sx={{ color: "white", fontWeight: "bold" }}
+                >
                   {col.headerName}
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
             {filteredData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => (
-                <TableRow key={row._id || index}>
-                  <TableCell style={{ fontWeight: "600" }}>
+                <TableRow
+                  key={row._id || index}
+                  sx={{
+                    "&:nth-of-type(odd)": {
+                      backgroundColor: "#f1f8ff",
+                    },
+                    "&:hover": {
+                      backgroundColor: "#e3f2fd",
+                    },
+                  }}
+                >
+                  <TableCell sx={{ fontWeight: 600 }}>
                     {page * rowsPerPage + index + 1}
                   </TableCell>
                   {columns.map((col) => (
                     <TableCell
                       key={col.field}
-                      style={{ fontWeight: "500", fontSize: "15px" }}
+                      sx={{ fontSize: 15, fontWeight: 500 }}
                     >
                       {col.renderCell
                         ? col.renderCell({ row })
@@ -145,6 +186,7 @@ const CustomTable = ({
         </Table>
       </TableContainer>
 
+      {/* Pagination */}
       <TablePagination
         component="div"
         count={filteredData.length}
@@ -152,6 +194,12 @@ const CustomTable = ({
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
+        sx={{
+          ".MuiTablePagination-root": {
+            color: "#1976d2",
+            fontWeight: "bold",
+          },
+        }}
       />
     </Paper>
   );
