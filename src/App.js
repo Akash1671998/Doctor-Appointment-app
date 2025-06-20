@@ -13,6 +13,7 @@ import ChangePassword from "./Pages/ChangePassword";
 import Dashboard from "./Pages/Dashboard";
 import UserDetails from "./Pages/UserDetails";
 import PasswordResetComponent from "./Pages/adminChangeUserPassword";
+import WelcomePage from "./Pages/wellcome";
 
 function App() {
   const storedToken = sessionStorage.getItem("token");
@@ -42,7 +43,7 @@ function App() {
         location.pathname === "/appointment/app/login" ||
         location.pathname === "/appointment/app/signup"
       ) {
-        window.history.replaceState({}, "", "/dashboard");
+        window.history.replaceState({}, "", "/welcome"); 
       }
     } else {
       setIsAuthenticated(false);
@@ -53,11 +54,24 @@ function App() {
     return isAuthenticated ? children : <Navigate to="/login" />;
   };
 
+  if (location.pathname === "/") {
+    window.location.replace("/appointment/app/login");
+  }
   return (
     <div className="App">
       {isAuthenticated && <Navbar setIsAuthenticated={setIsAuthenticated} />}
 
+     
+
       <Routes>
+      <Route
+  path="/welcome"
+  element={
+    <PrivateRoute>
+      <WelcomePage />
+    </PrivateRoute>
+  }
+/>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
           path="/login"
