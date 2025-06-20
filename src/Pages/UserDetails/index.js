@@ -6,6 +6,7 @@ import { application } from "../../authentication/auth";
 import DynamicFormDialog from "../DynamicForm";
 import DeleteConfirmation from "../ConfirmationBox";
 import CTLNotification from "../Notification";
+import DashboardPageWrapper from "../layout/DashboardPageWrapper";
 
 const UserDetails = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -112,6 +113,7 @@ const UserDetails = () => {
   };
   return (
     <>
+    <DashboardPageWrapper>
       <CustomTable
         dynamicSearch={false}
         searchEnable={true}
@@ -137,6 +139,7 @@ const UserDetails = () => {
         onCancel={onCancel}
       />
       <CTLNotification notify={notify} setNotify={setNotify} />
+      </DashboardPageWrapper>
     </>
   );
 };

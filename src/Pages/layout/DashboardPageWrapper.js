@@ -6,13 +6,13 @@ const DashboardPageWrapper = ({ children }) => {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(to bottom right, #f5faff, #e8f5e9)",
+        background: "linear-gradient(to bottom right, #dedada, #dedada)",
         p: { xs: 2, sm: 3, md: 4 },
       }}
     >
       <Box
         sx={{
-          maxWidth: "1400px",
+          maxWidth: "2000px",
           mx: "auto",
           backgroundColor: "#ffffff",
           borderRadius: 3,
