@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import { APIUrl, handleError, handleSuccess } from '../utils';
-import signupIllustration from '../Images/Expense.svg';
+import loginIllustration from "../Images/Doctor.svg"; // doctor-themed image
 
 function Signup() {
   const [signupInfo, setSignupInfo] = useState({
@@ -71,16 +71,16 @@ function Signup() {
       container
       sx={{
         minHeight: '100vh',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#e8f5e9',
       }}
     >
-      {/* Left Illustration */}
+      {/* Left: Illustration */}
       <Grid
         item
         xs={false}
         sm={6}
         sx={{
-          background: "linear-gradient(135deg,rgb(179, 215, 244),rgb(226, 187, 226))", // Light blue to cyan
+          background: "linear-gradient(135deg, #b3e5fc, #c8e6c9)",
           color: "#fff",
           display: "flex",
           alignItems: "center",
@@ -91,22 +91,22 @@ function Signup() {
         }}
       >
         <img
-          src={signupIllustration}
+          src={loginIllustration}
           alt="Signup Illustration"
           style={{ maxWidth: '80%', height: 'auto' }}
         />
-        <Typography variant="h5" sx={{ mt: 2, color: '#555', fontWeight: 500 }}>
-          Join Us and Track Your Expenses
+        <Typography variant="h5" sx={{ mt: 2, color: '#444', fontWeight: 600 }}>
+          Join the Health Portal Today
         </Typography>
         <Typography
           variant="body2"
-          sx={{ mt: 1, color: '#888', textAlign: 'center', maxWidth: 300 }}
+          sx={{ mt: 1, color: '#666', textAlign: 'center', maxWidth: 300 }}
         >
-          Create your account and start managing your finances efficiently.
+          Register to book appointments, manage your health records, and connect with doctors.
         </Typography>
       </Grid>
 
-      {/* Right Signup Card */}
+      {/* Right: Signup Form */}
       <Grid
         item
         xs={12}
@@ -121,7 +121,7 @@ function Signup() {
           px: 2,
           py: 4,
           borderRadius: "20px 0 0 20px",
-          background: "linear-gradient(135deg, #ffffff,rgb(230, 243, 245))",
+          background: "linear-gradient(135deg, #ffffff, #e3f2fd)",
         }}
       >
         <Box
@@ -137,22 +137,35 @@ function Signup() {
           }}
           noValidate
         >
-          <img
-            src={signupIllustration}
-            alt="Expense Logo"
-            style={{ width: '80px', marginBottom: '20px' }}
-          />
-          <Typography
-            variant="body2"
-            align="center"
-            sx={{ color: '#666', mb: 2, fontWeight: 'bold' }}
+          <Box
+            sx={{
+              backgroundColor: "#e3f2fd",
+              borderRadius: "50%",
+              padding: "12px",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+              mb: 2,
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            Create your account to get started
+            <img
+              src={loginIllustration}
+              alt="App Logo"
+              style={{ width: '60px', height: '60px', objectFit: 'contain' }}
+            />
+          </Box>
+
+          <Typography
+            variant="h6"
+            align="center"
+            sx={{ color: '#1976d2', fontWeight: 'bold', mb: 2 }}
+          >
+            Create your health account
           </Typography>
 
           <TextField
             fullWidth
-            label="Name"
+            label="Full Name"
             name="name"
             value={signupInfo.name}
             onChange={handleChange}
@@ -197,8 +210,8 @@ function Signup() {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {/* <MenuItem value="ROLE_ADMIN">Admin</MenuItem> */}
-              <MenuItem value="ROLE_USERS">User</MenuItem>
+              <MenuItem value="ROLE_USERS">Patient</MenuItem>
+              {/* You can add doctor/admin roles if needed */}
             </Select>
           </FormControl>
 
@@ -215,7 +228,7 @@ function Signup() {
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Typography variant="body2">
-                Already have an account?{' '}
+                Already registered?{' '}
                 <Link
                   to="/login"
                   style={{
@@ -224,7 +237,7 @@ function Signup() {
                     fontWeight: 500,
                   }}
                 >
-                  SignIn
+                  Login here
                 </Link>
               </Typography>
             </Grid>
