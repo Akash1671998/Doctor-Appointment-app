@@ -9,8 +9,8 @@ import {
   useTheme,
 } from "@mui/material";
 import CelebrationIcon from "@mui/icons-material/Celebration";
-import HospitalImage from "../../Images/3568984.jpg";
-import DoctorBanner from "../../Images/3568984.jpg";
+import HospitalImage from "../../Images/hospitalHome.jpg";
+import DoctorBanner from "../../Images/hospitalHome.jpg";
 
 const WelcomePage = () => {
   const userName = sessionStorage.getItem("userName") || "User";
@@ -20,37 +20,33 @@ const WelcomePage = () => {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        height: "100vh",
+        width: "100vw",
         background: "linear-gradient(135deg, #e3f2fd, #fce4ec)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        p: 2,
       }}
     >
       <Paper
         elevation={6}
         sx={{
+          height: "100%",
+          width: "100%",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          width: "100%",
-          maxWidth: 1200,
-          borderRadius: 4,
-          overflow: "hidden",
+          borderRadius: 0, // full screen card doesn't need border radius
         }}
       >
-        {/* Left Image Panel */}
+        {/* Left Side - Big Image */}
         <Box
           sx={{
-            flex: 1,
+            flex: 1.2,
             backgroundImage: `url(${DoctorBanner})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            minHeight: { xs: 200, md: "100%" },
+            minHeight: 300,
           }}
-        ></Box>
+        />
 
-        {/* Right Content Panel */}
+        {/* Right Side - Content */}
         <Box
           sx={{
             flex: 1,
@@ -60,14 +56,15 @@ const WelcomePage = () => {
             textAlign: "center",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Avatar
             src={HospitalImage}
             sx={{
-              width: 80,
-              height: 80,
+              width: 100,
+              height: 100,
               mb: 2,
               boxShadow: 3,
             }}
@@ -84,18 +81,12 @@ const WelcomePage = () => {
             Welcome, <strong>{userName}</strong> 👋
           </Typography>
 
-          <CelebrationIcon
-            sx={{ fontSize: 40, mt: 2, color: "#ec407a" }}
-          />
+          <CelebrationIcon sx={{ fontSize: 40, mt: 2, color: "#ec407a" }} />
 
-          <Typography
-            variant="body1"
-            sx={{ mt: 2, maxWidth: 400 }}
-          >
+          <Typography variant="body1" sx={{ mt: 2, maxWidth: 400 }}>
             We're happy to have you back. Choose where you’d like to go!
           </Typography>
 
-          {/* Buttons Without Grid */}
           <Box
             sx={{
               mt: 4,

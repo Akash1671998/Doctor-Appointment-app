@@ -29,7 +29,7 @@ const NotFound = () => {
       <Typography variant="subtitle1" sx={{ mb: 3 }}>
         Sorry, the page you're looking for doesn’t exist.
       </Typography>
-      <Button variant="contained" color="primary" onClick={() => navigate("/home")}>
+      <Button variant="contained" color="primary" onClick={() => navigate("/welcome")}>
         Go to Home
       </Button>
     </Box>

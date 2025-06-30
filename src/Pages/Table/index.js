@@ -30,12 +30,12 @@ const CustomTable = ({
   const [localSearch, setLocalSearch] = useState("");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
   const fetchData = () => {
     application
       .get(apiUrl)
       .then((response) => {
         setData(response.data.data || []);
+        
       })
       .catch((error) => {
         console.error("API error:", error);

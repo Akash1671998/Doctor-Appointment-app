@@ -60,6 +60,9 @@ const ChangePassword = () => {
         });
         setTimeout(() => {
           navigate("/login");
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("loggedInUser");
+          sessionStorage.removeItem("role");
         }, 1000);
       })
       .catch((error) => {

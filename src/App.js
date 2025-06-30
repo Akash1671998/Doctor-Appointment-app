@@ -14,6 +14,9 @@ import Dashboard from "./Pages/Dashboard";
 import UserDetails from "./Pages/UserDetails";
 import PasswordResetComponent from "./Pages/adminChangeUserPassword";
 import WelcomePage from "./Pages/wellcome";
+import DoctorForm from "./Pages/AddDocterDetails";
+import DoctorList from "./Pages/DoctorList";
+
 
 function App() {
   const storedToken = sessionStorage.getItem("token");
@@ -43,7 +46,7 @@ function App() {
         location.pathname === "/appointment/app/login" ||
         location.pathname === "/appointment/app/signup"
       ) {
-        window.history.replaceState({}, "", "/welcome"); 
+        window.history.replaceState({}, "", "/welcome");
       }
     } else {
       setIsAuthenticated(false);
@@ -61,17 +64,15 @@ function App() {
     <div className="App">
       {isAuthenticated && <Navbar setIsAuthenticated={setIsAuthenticated} />}
 
-     
-
       <Routes>
-      <Route
-  path="/welcome"
-  element={
-    <PrivateRoute>
-      <WelcomePage />
-    </PrivateRoute>
-  }
-/>
+        <Route
+          path="/welcome"
+          element={
+            <PrivateRoute>
+              <WelcomePage />
+            </PrivateRoute>
+          }
+        />
         <Route path="/" element={<Navigate to="/login" />} />
         <Route
           path="/login"
@@ -84,6 +85,14 @@ function App() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/details"
+          element={
+            <PrivateRoute>
+              <DoctorList />
             </PrivateRoute>
           }
         />
@@ -144,6 +153,17 @@ function App() {
           element={
             <PrivateRoute>
               <ChangePassword
+                updateList={updateList}
+                setUpdateList={setUpdateList}
+              />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/doctor"
+          element={
+            <PrivateRoute>
+              <DoctorForm
                 updateList={updateList}
                 setUpdateList={setUpdateList}
               />
